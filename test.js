@@ -1,4 +1,4 @@
-var Quickmap = require('./index.js)
+var Quickmap = require('./index.js')
 var quickmap = new Quickmap()
 
 quickmap.set(3,"hello, this is three");
