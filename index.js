@@ -2,12 +2,12 @@
 
 module.exports = class QuickMap {
   constructor() {
-    this.objects = {};
+    this.objects = [];
     this.length = 0;
     this.cleanin = 30;
   }
   clean() {
-    var objects = {};
+    var objects = [];
     this.objects.forEach((ob,id)=>{
       if (ob.deleted) return;
       objects[id] = ob;
@@ -33,7 +33,7 @@ module.exports = class QuickMap {
     return true
   }
   toObject() {
-    var objects = {};
+    var objects = [];
     this.objects.forEach((ob,id)=>{
       if (ob.deleted) return;
       objects[id] = ob.node;
