@@ -7,7 +7,12 @@ module.exports = class QuickMap {
     this.cleanin = 30;
   }
   clean() {
-    this.objects = this.objects.filter(function(a) {return !a.deleted})
+    var objects = {};
+    this.objects.forEach((ob,id)=>{
+      if (ob.deleted) return;
+      objects[id] = ob;
+    })
+    this.objects = objects;
     this.cleanin = 30
     this.length = this.objects.length;
   }
