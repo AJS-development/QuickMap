@@ -1,0 +1,20 @@
+{
+  "name": "quickmap",
+  "version": "1.2.0",
+  "description": "A very fast map",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AJS-development/QuickMap/"
+  },
+  "keywords": [
+    "map",
+    "fast",
+    "quick"
+  ],
+  "author": "andrews54757",
+  "license": "Apache-2.0"
+}
