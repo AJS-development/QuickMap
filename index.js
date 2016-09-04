@@ -19,6 +19,7 @@ module.exports = class QuickMap {
   constructor() {
     this.objects = {};
     this.length = 0;
+    this.loops = [];
     this.cleanin = 30;
   }
   clean() {
@@ -32,8 +33,12 @@ module.exports = class QuickMap {
     this.cleanin = 30
     this.length = this.objects.length;
   }
+  upLoops(id) {
+   this.loops.forEach((loop)=>{loop.push(id)});  
+  }
   set(id,node) {
      var key = "_" + id.toString();
+  // if (this.loops[0]) this.upLoops(key);
    if (!this.objects[key] || this.objects[key].deleted) this.length ++;
     this.objects[key] = {node: node,deleted: false,key: id}
   }
@@ -62,20 +67,45 @@ module.exports = class QuickMap {
     return objects;
   }
   every(a) {
+     /*
+      var added = [];
+     this.loops.push(added);
      var visited = [];
+     */
     for (var i in this.objects) {
      if (this.objects[i].deleted) continue;
-     visited.push(i);
+     // visited.push(i);
      if (!a(this.objects[i].node,this.objects[i].key)) return;
     }
+    /*
+       for (var i in added) {
+          var key = added[i]
+          if (visited.indexOf(key) == -1) if (!a(this.objects[key].node,this.objects[key].key)) return;
+          
+       }
+    this.loops.splice(this.loops.indexOf(added),1)
+    
+    */
   }
   forEach(a) {
+     /*
+     var added = [];
+     this.loops.push(added);
      var visited = [];
+      */
       for (var i in this.objects) {
      if (this.objects[i].deleted) continue;
-     visited.push(i);
+     // visited.push(i);
      a(this.objects[i].node,this.objects[i].key)
     }
+    /*
+      for (var i in added) {
+          var key = added[i]
+          if (visited.indexOf(key) == -1) a(this.objects[key].node,this.objects[key].key)
+          
+       }
+    this.loops.splice(this.loops.indexOf(added),1)
+  */
   }
   
 }
