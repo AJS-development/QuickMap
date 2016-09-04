@@ -15,6 +15,10 @@ module.exports = class QuickMap {
     this.length ++;
     this.objects[id.toString()] = {node: node,deleted: false}
   }
+  get(id) {
+    if (!this.objects[id.toString()] || this.objects[id.toString()].deleted) return false;
+    return this.objects[id.toString()].node
+  }
   delete(id) {
     this.length --;
     if (!this.objects[id.toString()] && !this.objects[id.toString()].deleted) return false;
