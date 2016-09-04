@@ -9,11 +9,14 @@ module.exports = class QuickMap {
   clean() {
     this.objects = this.objects.filter(function(a) {return !a.deleted})
     this.cleanin = 30
+    this.length = this.objects.length;
   }
   set(id,node) {
+    this.length ++;
     this.objects[id.toString()] = {node: node,deleted: false}
   }
   delete(id) {
+    this.length --;
     if (!this.objects[id.toString()] && !this.objects[id.toString()].deleted) return false;
     this.objects[id.toString()] = {deleted: true}
     this.cleanin --;
