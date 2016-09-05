@@ -20,6 +20,8 @@ module.exports = class QuickMap {
     this.objects = {};
     this.length = 0;
     this.loops = [];
+    this.last = 0;
+    this.type = "quickmap"
     this.cleanin = 30;
   }
   clean() {
@@ -34,7 +36,14 @@ module.exports = class QuickMap {
     this.length = this.objects.length;
   }
   upLoops(id) {
-   this.loops.forEach((loop)=>{loop.push(id)});  
+   this.loops.forEach((loop)=>{loop.data.push(id)});  
+  }
+  concat(quickmap) {
+     if (quickmap.type != "quickmap") return
+     for (var i in quickmap.objects) {
+        this.objects[i] = quickmap.objects[i]
+     }
+     this.clean();
   }
   set(id,node) {
      var key = "_" + id.toString();
@@ -106,6 +115,50 @@ module.exports = class QuickMap {
        }
     this.loops.splice(this.loops.indexOf(added),1)
   */
+  }
+  getId() {
+     return this.last ++;
+  }
+  forEachInteg(a) {
+     
+      
+     var added = {data: [], id: this.getId()};
+     this.loops.push(added);
+     var visited = [];
+      
+      for (var i in this.objects) {
+     if (this.objects[i].deleted) continue;
+      visited.push(i);
+     a(this.objects[i].node,this.objects[i].key)
+    }
+    
+      for (var i in added.data) {
+          var key = added.data[i]
+          if (visited.indexOf(key) == -1) a(this.objects[key].node,this.objects[key].key)
+          
+       }
+    this.loops.splice(this.loops.indexOf(added),1)
+  
+  }
+  everyInteg(a) {
+          
+     var added = {data: [], id: this.getId()};
+     this.loops.push(added);
+     var visited = [];
+      
+      for (var i in this.objects) {
+     if (this.objects[i].deleted) continue;
+      visited.push(i);
+     a(this.objects[i].node,this.objects[i].key)
+    }
+    
+      for (var i in added.data) {
+          var key = added.data[i]
+          if (visited.indexOf(key) == -1) if (!a(this.objects[key].node,this.objects[key].key)) return
+          
+       }
+    this.loops.splice(this.loops.indexOf(added),1)
+  
   }
   
 }
