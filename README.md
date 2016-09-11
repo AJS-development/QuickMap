@@ -23,4 +23,4 @@ var quickmap = new Quickmap();
 6. every
 7. forEachInteg Integritous forEach
 8. everyInteg Integritous every
-7. clean() cleans the system
+9. clean() cleans the system
