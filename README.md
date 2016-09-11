@@ -18,7 +18,7 @@ var quickmap = new Quickmap();
 1. set(id,node) Inserts an item
 2. get(id) Gets an item
 3. delete(id) removes an item
-4. toObject() Converts to an object
+4. toArray() Converts to an Array
 5. forEach
 6. every
 7. clean() cleans the system
