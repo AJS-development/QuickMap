@@ -66,7 +66,7 @@ module.exports = class QuickMap {
     if (this.cleanin <= 0) this.clean();
     return true
   }
-  toObject() {
+  toArray() {
     var objects = [];
     for (var i in this.objects) {
      var ob = this.objects[i];
@@ -75,6 +75,7 @@ module.exports = class QuickMap {
     }
     return objects;
   }
+  
   every(a) {
      /*
       var added = [];
