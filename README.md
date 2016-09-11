@@ -21,4 +21,6 @@ var quickmap = new Quickmap();
 4. toArray() Converts to an Array
 5. forEach
 6. every
+7. forEachInteg Integritous forEach
+8. everyInteg Integritous every
 7. clean() cleans the system
