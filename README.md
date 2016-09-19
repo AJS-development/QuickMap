@@ -1,5 +1,5 @@
 [![NPM] (https://img.shields.io/badge/Module-Npm-blue.svg)] (https://www.npmjs.com/package/quickmap)
-[![Donate] (https://img.shields.io/badge/Donate-Paypal-brightgreen.svg)] (paypal.me/andrews54757)
+[![Donate] (https://img.shields.io/badge/Donate-Paypal-brightgreen.svg)] (https://paypal.me/andrews54757)
 # QuickMap
 A very fast map
 
