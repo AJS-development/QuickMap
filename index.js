@@ -58,9 +58,8 @@ module.exports = class QuickMap {
   }
   delete(id) {
     var object = this.objects["_" + id.toString()];
-    if (object && !object.deleted) this.length --;
-     
-    if (!object && !object.deleted) return false;
+     if (!object || object.deleted) return false;
+    if (!object.deleted) this.length --;
     this.objects["_" + id.toString()] = {deleted: true}
     this.cleanin --;
     if (this.cleanin <= 0) this.clean();
