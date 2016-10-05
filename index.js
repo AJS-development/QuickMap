@@ -29,7 +29,7 @@ module.exports = class QuickMap {
     for (var i in this.objects) {
      var ob = this.objects[i];
       if (ob.deleted) continue;
-      objects[id] = ob;
+      objects[ob.key] = ob;
     }
     this.objects = objects;
     this.cleanin = 30
