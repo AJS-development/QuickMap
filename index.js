@@ -103,7 +103,7 @@ module.exports = class QuickMap {
      var visited = [];
       */
       for (var i in this.objects) {
-     if (this.objects[i].deleted) continue;
+     if (!this.objects[i] || this.objects[i].deleted) continue;
      // visited.push(i);
      a(this.objects[i].node,this.objects[i].key)
     }
@@ -127,7 +127,7 @@ module.exports = class QuickMap {
      var visited = [];
       
       for (var i in this.objects) {
-     if (this.objects[i].deleted) continue;
+    if (!this.objects[i] || this.objects[i].deleted) continue;
       visited.push(i);
      a(this.objects[i].node,this.objects[i].key)
     }
