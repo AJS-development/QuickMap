@@ -26,18 +26,25 @@ module.exports = class QuickMap {
   }
   clean() {
     var objects = {};
+     var count = 0;
     for (var i in this.objects) {
      var ob = this.objects[i];
       if (ob.deleted) continue;
+       count++;
       objects[i] = ob;
     }
     this.objects = objects;
     this.cleanin = 30
-    this.length = this.objects.length;
+    this.length = count;
   }
   upLoops(id) {
    this.loops.forEach((loop)=>{loop.data.push(id)});  
   }
+   clear() {
+      this.objects = {};
+      this.length = 0;
+      this.cleanin = 30;
+   }
   concat(quickmap) {
      if (quickmap.type != "quickmap") return
      for (var i in quickmap.objects) {
@@ -59,7 +66,7 @@ module.exports = class QuickMap {
   delete(id) {
     var object = this.objects["_" + id.toString()];
      if (!object || object.deleted) return false;
-    if (!object.deleted) this.length --;
+     this.length --;
     this.objects["_" + id.toString()] = {deleted: true}
     this.cleanin --;
     if (this.cleanin <= 0) this.clean();
