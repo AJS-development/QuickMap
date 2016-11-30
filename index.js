@@ -77,7 +77,7 @@ module.exports = class QuickMap {
     for (var i in this.objects) {
      var ob = this.objects[i];
       if (ob.deleted) continue;
-      objects[ob.key] = ob.node;
+      objects.push(ob.node);
     }
     return objects;
   }
